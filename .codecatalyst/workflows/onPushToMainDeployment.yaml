@@ -1,4 +1,4 @@
-Name: Workflow_9714
+Name: onPushToMainDeployment
 SchemaVersion: "1.0"
 
 # Optional - Set automatic triggers.
