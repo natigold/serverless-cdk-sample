@@ -47,6 +47,7 @@ Actions:
       Type: EC2 # Defines the action's properties.
     Configuration:
       StackName: ServerlessCdkStack
+      Region: eu-west-1
     DependsOn:
       - AWSCDKbootstrap_88
       - Build_18
