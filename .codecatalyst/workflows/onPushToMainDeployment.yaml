@@ -12,25 +12,22 @@ Actions:
   AWSCDKbootstrap_88:
     # Identifies the action. Do not modify this value.
     Identifier: aws/cdk-bootstrap@v1.0.7
-
+    # Required; You can use an environment, AWS account connection, and role to access AWS resources.
+    Environment:
+      Connections:
+        - Role: CodeCatalystWorkflowDevelopmentRole-natigold-space
+          Name: "390631740811"
+      Name: development
     # Specifies the source and/or artifacts to pass to the action as input.
     Inputs:
       # Optional
       Sources:
         - WorkflowSource # This specifies that the action requires this Workflow as a source
-
-    # Required; You can use an environment, AWS account connection, and role to access AWS resources.
-    Environment:
-      Name:
-      Connections:
-        - Name:
-          Role:
-
-            # Defines the action's properties.
+    Compute:
+      Type: EC2 # Defines the action's properties.
     Configuration:
       # Required; type: string; description: AWS region to bootstrap
-      Region:
-
+      Region: eu-west-1
 
   AWSCDKdeploy_96:
     # Identifies the action. Do not modify this value.
@@ -56,26 +53,26 @@ Actions:
   Build_18:
     # Identifies the action. Do not modify this value.
     Identifier: aws/build@v1.0.0
-
     # Specifies the source and/or artifacts to pass to the action as input.
     Inputs:
       # Optional
       Sources:
         - WorkflowSource # This specifies that the action requires this Workflow as a source
-
     Outputs:
       # Optional; Automatically discover reports for popular test frameworks
       AutoDiscoverReports:
         Enabled: true
         # Use as prefix for the report files
         ReportNamePrefix: rpt
-
     # Defines the action's properties.
     Configuration:
       # Required - Steps are sequential instructions that run shell commands
       Steps:
-        - Run: echo "Hello, World!"
-        - Run: echo "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>" >> report.xml
-        - Run: echo "<testsuite tests=\"1\" name=\"TestAgentJunit\" >" >> report.xml
-        - Run: echo "<testcase classname=\"TestAgentJunit\" name=\"Dummy
-            Test\"/></testsuite>" >> report.xml
+        - Run: npm install
+    Compute:
+      Type: EC2
+    Environment:
+      Connections:
+        - Role: CodeCatalystWorkflowDevelopmentRole-natigold-space
+          Name: "390631740811"
+      Name: development
