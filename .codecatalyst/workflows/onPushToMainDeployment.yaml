@@ -46,7 +46,7 @@ Actions:
     Compute:
       Type: EC2 # Defines the action's properties.
     Configuration:
-      StackName: ServerlessCDKStack
+      StackName: ServerlessCdkStack
     DependsOn:
       - AWSCDKbootstrap_88
       - Build_18
